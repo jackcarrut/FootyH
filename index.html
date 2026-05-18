@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,156 +9,162 @@
   :root {
     --bg: #0d0d0d; --card: #1e1e1e; --border: #2a2a2a;
     --green: #b8f04a; --red: #ff4444; --gold: #f5c842;
+    --blue: #4ab8f0; --purple: #c084fc;
     --white: #f0ede8; --muted: #666; --text: #d4d0cb;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; max-width: 430px; margin: 0 auto; padding-bottom: 60px; }
 
-/* HEADER */
-.header { padding: 24px 20px 14px; border-bottom: 1px solid var(–border); position: sticky; top: 0; background: var(–bg); z-index: 10; }
-.header-top { display: flex; justify-content: space-between; align-items: flex-end; }
-.logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 36px; letter-spacing: 2px; color: var(–green); line-height: 1; }
-.logo span { color: var(–white); }
-.day-badge { text-align: right; }
-.day-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 40px; color: var(–gold); line-height: 1; }
-.day-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(–muted); font-family: ‘DM Mono’, monospace; }
-.date-row { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; }
-.date-txt { font-family: ‘DM Mono’, monospace; font-size: 11px; color: var(–muted); }
-.pill { font-size: 9px; font-family: ‘DM Mono’, monospace; letter-spacing: 1px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
-.pill-g { background: rgba(184,240,74,0.12); color: var(–green); border: 1px solid rgba(184,240,74,0.3); }
-.pill-y { background: rgba(245,200,66,0.10); color: var(–gold); border: 1px solid rgba(245,200,66,0.25); }
+  .header { padding: 24px 20px 14px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 10; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-end; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 2px; color: var(--green); line-height: 1; }
+  .logo span { color: var(--white); }
+  .day-badge { text-align: right; }
+  .day-num { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--gold); line-height: 1; }
+  .day-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .date-row { margin-top: 8px; display: flex; justify-content: space-between; align-items: center; }
+  .date-txt { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+  .pill { font-size: 9px; font-family: 'DM Mono', monospace; letter-spacing: 1px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
+  .pill-g { background: rgba(184,240,74,0.12); color: var(--green); border: 1px solid rgba(184,240,74,0.3); }
+  .pill-y { background: rgba(245,200,66,0.10); color: var(--gold); border: 1px solid rgba(245,200,66,0.25); }
 
-/* PROGRESS */
-.prog-section { padding: 14px 20px; border-bottom: 1px solid var(–border); }
-.prog-meta { display: flex; justify-content: space-between; margin-bottom: 6px; }
-.prog-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: ‘DM Mono’, monospace; color: var(–muted); }
-.prog-count { font-size: 11px; font-family: ‘DM Mono’, monospace; color: var(–green); }
-.prog-track { height: 4px; background: var(–border); border-radius: 2px; overflow: hidden; }
-.prog-fill { height: 100%; background: linear-gradient(90deg, var(–green), #d4ff70); border-radius: 2px; transition: width 0.5s ease; }
-.pass-indicator { margin-top: 6px; font-size: 10px; font-family: ‘DM Mono’, monospace; color: var(–muted); text-align: right; }
-.pass-indicator.passing { color: var(–green); }
-.pass-indicator.failing { color: var(–red); }
+  .prog-section { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+  .prog-meta { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .prog-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: 'DM Mono', monospace; color: var(--muted); }
+  .prog-count { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--green); }
+  .prog-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .prog-fill { height: 100%; background: linear-gradient(90deg, var(--green), #d4ff70); border-radius: 2px; transition: width 0.5s ease; }
+  .pass-indicator { margin-top: 6px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); text-align: right; }
+  .pass-indicator.passing { color: var(--green); }
+  .pass-indicator.failing { color: var(--red); }
 
-/* TABS */
-.tabs { display: flex; padding: 14px 20px 0; gap: 6px; margin-bottom: 14px; }
-.tab { flex: 1; text-align: center; padding: 7px 2px; border-radius: 8px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-family: ‘DM Mono’, monospace; cursor: pointer; border: 1px solid var(–border); background: none; color: var(–muted); -webkit-tap-highlight-color: transparent; }
-.tab.active { background: var(–green); color: #0d0d0d; border-color: var(–green); font-weight: 600; }
+  .tabs { display: flex; padding: 14px 20px 0; gap: 6px; margin-bottom: 14px; }
+  .tab { flex: 1; text-align: center; padding: 7px 2px; border-radius: 8px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-family: 'DM Mono', monospace; cursor: pointer; border: 1px solid var(--border); background: none; color: var(--muted); -webkit-tap-highlight-color: transparent; }
+  .tab.active { background: var(--green); color: #0d0d0d; border-color: var(--green); font-weight: 600; }
 
-/* SECTIONS */
-.section { display: none; }
-.section.visible { display: block; }
+  .section { display: none; }
+  .section.visible { display: block; }
 
-/* TASK CARDS */
-.tasks-wrap { padding: 0 20px; }
-.task-card { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 14px 16px; margin-bottom: 9px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: all 0.15s; user-select: none; -webkit-tap-highlight-color: transparent; }
-.task-card:active { transform: scale(0.98); }
-.task-card.done { border-color: rgba(184,240,74,0.35); background: rgba(184,240,74,0.04); }
-.task-icon { font-size: 24px; width: 32px; text-align: center; flex-shrink: 0; }
-.task-info { flex: 1; }
-.task-name { font-size: 14px; font-weight: 500; color: var(–white); margin-bottom: 2px; }
-.task-sub { font-size: 11px; color: var(–muted); font-family: ‘DM Mono’, monospace; line-height: 1.4; }
-.task-check { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(–border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; transition: all 0.2s; color: #0d0d0d; }
-.done .task-check { background: var(–green); border-color: var(–green); }
+  /* SECTION DIVIDERS */
+  .task-section-label { margin: 4px 20px 6px; display: flex; align-items: center; gap: 8px; }
+  .task-section-label span { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-family: 'DM Mono', monospace; color: var(--muted); white-space: nowrap; }
+  .task-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* PASS BANNER */
-.pass-banner { margin: 14px 20px; border-radius: 14px; padding: 16px; text-align: center; display: none; }
-.pass-banner.visible { display: block; }
-.pass-banner.win { background: linear-gradient(135deg,rgba(184,240,74,0.15),rgba(184,240,74,0.05)); border: 1px solid rgba(184,240,74,0.4); }
-.pass-banner.lose { background: rgba(255,68,68,0.06); border: 1px solid rgba(255,68,68,0.3); }
-.pass-banner .big { font-family: ‘Bebas Neue’, sans-serif; font-size: 26px; letter-spacing: 2px; }
-.pass-banner.win .big { color: var(–green); }
-.pass-banner.lose .big { color: var(–red); }
-.pass-banner .sub { font-size: 12px; color: var(–muted); margin-top: 4px; }
+  .tasks-wrap { padding: 0 20px; }
+  .task-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 9px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: all 0.15s; user-select: none; -webkit-tap-highlight-color: transparent; }
+  .task-card:active { transform: scale(0.98); }
+  .task-card.done { border-color: rgba(184,240,74,0.35); background: rgba(184,240,74,0.04); }
+  .task-card.habit-card.done { border-color: rgba(74,184,240,0.35); background: rgba(74,184,240,0.04); }
+  .task-card.soft-card.done { border-color: rgba(192,132,252,0.35); background: rgba(192,132,252,0.04); }
+  .task-icon { font-size: 24px; width: 32px; text-align: center; flex-shrink: 0; }
+  .task-info { flex: 1; }
+  .task-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+  .task-sub { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; line-height: 1.4; }
+  .task-badge { display: inline-block; font-size: 8px; font-family: 'DM Mono', monospace; letter-spacing: 1px; padding: 2px 6px; border-radius: 4px; margin-bottom: 3px; text-transform: uppercase; }
+  .badge-hard { background: rgba(255,68,68,0.12); color: #ff7070; border: 1px solid rgba(255,68,68,0.25); }
+  .badge-soft { background: rgba(192,132,252,0.12); color: var(--purple); border: 1px solid rgba(192,132,252,0.25); }
+  .task-check { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; transition: all 0.2s; color: #0d0d0d; }
+  .done .task-check { background: var(--green); border-color: var(--green); }
+  .habit-card.done .task-check { background: var(--blue); border-color: var(--blue); }
+  .soft-card.done .task-check { background: var(--purple); border-color: var(--purple); }
 
-/* WORKOUT CARD */
-.workout-card { background: var(–card); border: 1px solid rgba(184,240,74,0.25); border-radius: 12px; overflow: hidden; margin: 0 20px 10px; display: none; }
-.workout-header { display: flex; justify-content: space-between; align-items: center; padding: 13px 16px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.workout-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 17px; color: var(–green); letter-spacing: 1px; }
-.workout-focus { font-size: 10px; color: var(–muted); font-family: ‘DM Mono’, monospace; margin-top: 2px; }
-.workout-toggle { color: var(–green); font-size: 11px; padding: 3px 8px; border: 1px solid rgba(184,240,74,0.3); border-radius: 6px; }
-.workout-body { display: none; border-top: 1px solid var(–border); padding: 10px 16px; }
-.ex-row { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(–border); }
-.ex-row:last-of-type { border-bottom: none; }
-.ex-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 18px; color: var(–border); width: 18px; flex-shrink: 0; }
-.ex-name { font-size: 13px; font-weight: 500; color: var(–white); margin-bottom: 2px; }
-.ex-meta { font-size: 10px; font-family: ‘DM Mono’, monospace; color: var(–green); margin-bottom: 2px; }
-.ex-note { font-size: 10px; color: var(–muted); line-height: 1.4; }
-.workout-footer { margin-top: 8px; font-size: 10px; font-family: ‘DM Mono’, monospace; color: var(–muted); text-align: center; padding-top: 8px; border-top: 1px solid var(–border); }
+  .pass-banner { margin: 14px 20px; border-radius: 14px; padding: 16px; text-align: center; display: none; }
+  .pass-banner.visible { display: block; }
+  .pass-banner.win { background: linear-gradient(135deg,rgba(184,240,74,0.15),rgba(184,240,74,0.05)); border: 1px solid rgba(184,240,74,0.4); }
+  .pass-banner.lose { background: rgba(255,68,68,0.06); border: 1px solid rgba(255,68,68,0.3); }
+  .pass-banner .big { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; }
+  .pass-banner.win .big { color: var(--green); }
+  .pass-banner.lose .big { color: var(--red); }
+  .pass-banner .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
-/* SCORE CARDS */
-.score-card { margin: 0 20px 10px; background: var(–card); border-radius: 12px; padding: 14px 16px; }
-.score-card.conf { border: 1px solid rgba(245,200,66,0.25); }
-.score-card.energy { border: 1px solid rgba(245,200,66,0.15); }
-.score-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: ‘DM Mono’, monospace; color: var(–muted); margin-bottom: 10px; }
-.stars { display: flex; gap: 6px; justify-content: center; margin-bottom: 6px; }
-.star-btn { font-size: 30px; background: none; border: none; cursor: pointer; opacity: 0.2; transition: opacity 0.15s; -webkit-tap-highlight-color: transparent; padding: 3px; line-height: 1; }
-.star-btn.on { opacity: 1; }
-.score-hint { text-align: center; font-size: 11px; font-family: ‘DM Mono’, monospace; color: var(–muted); min-height: 15px; }
+  .workout-card { background: var(--card); border: 1px solid rgba(184,240,74,0.25); border-radius: 12px; overflow: hidden; margin: 0 20px 10px; display: none; }
+  .workout-header { display: flex; justify-content: space-between; align-items: center; padding: 13px 16px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .workout-title { font-family: 'Bebas Neue', sans-serif; font-size: 17px; color: var(--green); letter-spacing: 1px; }
+  .workout-focus { font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace; margin-top: 2px; }
+  .workout-toggle { color: var(--green); font-size: 11px; padding: 3px 8px; border: 1px solid rgba(184,240,74,0.3); border-radius: 6px; }
+  .workout-body { display: none; border-top: 1px solid var(--border); padding: 10px 16px; }
+  .ex-row { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .ex-row:last-of-type { border-bottom: none; }
+  .ex-num { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--border); width: 18px; flex-shrink: 0; }
+  .ex-name { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+  .ex-meta { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--green); margin-bottom: 2px; }
+  .ex-note { font-size: 10px; color: var(--muted); line-height: 1.4; }
+  .workout-footer { margin-top: 8px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); text-align: center; padding-top: 8px; border-top: 1px solid var(--border); }
 
-/* INPUT CARDS */
-.input-card { margin: 0 20px 10px; background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 14px 16px; }
-.input-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: ‘DM Mono’, monospace; color: var(–muted); margin-bottom: 10px; }
-.num-row { display: flex; align-items: center; gap: 10px; }
-.num-input { background: rgba(255,255,255,0.04); border: 1px solid var(–border); border-radius: 8px; color: var(–white); font-family: ‘Bebas Neue’, sans-serif; font-size: 26px; padding: 8px 12px; width: 120px; outline: none; -webkit-appearance: none; appearance: none; }
-.num-input::placeholder { color: var(–muted); font-size: 18px; }
-.num-unit { font-family: ‘DM Mono’, monospace; font-size: 14px; color: var(–muted); }
-.input-hint { font-size: 11px; font-family: ‘DM Mono’, monospace; color: var(–muted); margin-top: 8px; }
-.grat-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(–border); border-radius: 8px; color: var(–white); font-family: ‘DM Sans’, sans-serif; font-size: 14px; padding: 10px 12px; resize: none; height: 70px; outline: none; line-height: 1.5; -webkit-appearance: none; }
-.grat-input::placeholder { color: var(–muted); }
-.grat-count { font-size: 10px; font-family: ‘DM Mono’, monospace; color: var(–muted); text-align: right; margin-top: 4px; }
+  .score-card { margin: 0 20px 10px; background: var(--card); border-radius: 12px; padding: 14px 16px; }
+  .score-card.conf { border: 1px solid rgba(245,200,66,0.25); }
+  .score-card.energy { border: 1px solid rgba(245,200,66,0.15); }
+  .score-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: 'DM Mono', monospace; color: var(--muted); margin-bottom: 10px; }
+  .stars { display: flex; gap: 6px; justify-content: center; margin-bottom: 6px; }
+  .star-btn { font-size: 30px; background: none; border: none; cursor: pointer; opacity: 0.2; transition: opacity 0.15s; -webkit-tap-highlight-color: transparent; padding: 3px; line-height: 1; }
+  .star-btn.on { opacity: 1; }
+  .score-hint { text-align: center; font-size: 11px; font-family: 'DM Mono', monospace; color: var(--muted); min-height: 15px; }
 
-/* RESET */
-.reset-btn { margin: 20px 20px 0; width: calc(100% - 40px); padding: 11px; background: none; border: 1px solid var(–border); color: var(–muted); border-radius: 8px; font-size: 10px; font-family: ‘DM Mono’, monospace; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .input-card { margin: 0 20px 10px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .input-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: 'DM Mono', monospace; color: var(--muted); margin-bottom: 10px; }
+  .num-row { display: flex; align-items: center; gap: 10px; }
+  .num-input { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 26px; padding: 8px 12px; width: 120px; outline: none; -webkit-appearance: none; appearance: none; }
+  .num-input::placeholder { color: var(--muted); font-size: 18px; }
+  .num-unit { font-family: 'DM Mono', monospace; font-size: 14px; color: var(--muted); }
+  .input-hint { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--muted); margin-top: 8px; }
+  .grat-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 10px 12px; resize: none; height: 70px; outline: none; line-height: 1.5; -webkit-appearance: none; }
+  .grat-input::placeholder { color: var(--muted); }
+  .grat-count { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); text-align: right; margin-top: 4px; }
 
-/* HISTORY */
-.hist-wrap { padding: 0 20px; }
-.hist-day { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 13px 15px; margin-bottom: 8px; }
-.hist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
-.hist-date { font-size: 12px; font-family: ‘DM Mono’, monospace; color: var(–white); }
-.hist-score { font-family: ‘Bebas Neue’, sans-serif; font-size: 18px; }
-.hist-score.pass { color: var(–green); }
-.hist-score.fail { color: var(–red); }
-.dots { display: flex; gap: 5px; flex-wrap: wrap; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(–border); }
-.dot.on { background: var(–green); }
+  .reset-btn { margin: 20px 20px 0; width: calc(100% - 40px); padding: 11px; background: none; border: 1px solid var(--border); color: var(--muted); border-radius: 8px; font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 
-/* CHARTS */
-.chart-section { padding: 0 20px; margin-bottom: 18px; }
-.chart-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: ‘DM Mono’, monospace; color: var(–muted); margin-bottom: 8px; }
-.chart-wrap { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 14px; }
-.chart-bars { display: flex; align-items: flex-end; gap: 3px; height: 76px; }
-.bar-col { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; min-width: 14px; }
-.bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 2px; }
-.bar.hi { background: var(–green); opacity: 0.9; }
-.bar.mid { background: var(–gold); opacity: 0.85; }
-.bar.lo { background: var(–red); opacity: 0.7; }
-.bar-lbl { font-size: 7px; font-family: ‘DM Mono’, monospace; color: var(–muted); writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
-.chart-meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; font-family: ‘DM Mono’, monospace; color: var(–muted); }
-.chart-meta b { color: var(–gold); font-size: 12px; font-weight: 400; }
-.empty-chart { color: var(–muted); font-size: 11px; font-family: ‘DM Mono’, monospace; text-align: center; padding: 16px 0; }
+  .hist-wrap { padding: 0 20px; }
+  .hist-day { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 13px 15px; margin-bottom: 8px; }
+  .hist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
+  .hist-date { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--white); }
+  .hist-score { font-family: 'Bebas Neue', sans-serif; font-size: 18px; }
+  .hist-score.pass { color: var(--green); }
+  .hist-score.fail { color: var(--red); }
+  .dots { display: flex; gap: 5px; flex-wrap: wrap; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+  .dot.on { background: var(--green); }
+  .dot.habit { background: var(--border); }
+  .dot.habit.on { background: var(--blue); }
 
-/* STATS */
-.stats-wrap { padding: 0 20px; }
-.stat-block { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 15px; margin-bottom: 10px; }
-.stat-block-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: ‘DM Mono’, monospace; color: var(–muted); margin-bottom: 12px; }
-.hero-grid { display: grid; gap: 8px; }
-.hero-grid.three { grid-template-columns: 1fr 1fr 1fr; }
-.hero-grid.two { grid-template-columns: 1fr 1fr; }
-.hero-cell { text-align: center; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 6px; }
-.hero-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 28px; color: var(–green); line-height: 1; }
-.hero-num.gold { color: var(–gold); }
-.hero-num.red { color: var(–red); }
-.hero-lbl { font-size: 9px; font-family: ‘DM Mono’, monospace; color: var(–muted); letter-spacing: 1px; margin-top: 3px; text-transform: uppercase; }
-.tc-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(–border); }
-.tc-row:last-child { border-bottom: none; }
-.tc-icon { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
-.tc-info { flex: 1; }
-.tc-name { font-size: 12px; color: var(–white); margin-bottom: 4px; }
-.tc-track { height: 4px; background: var(–border); border-radius: 2px; overflow: hidden; }
-.tc-fill { height: 100%; border-radius: 2px; }
-.tc-pct { font-size: 11px; font-family: ‘DM Mono’, monospace; width: 32px; text-align: right; flex-shrink: 0; }
+  .chart-section { padding: 0 20px; margin-bottom: 18px; }
+  .chart-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: 'DM Mono', monospace; color: var(--muted); margin-bottom: 8px; }
+  .chart-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 3px; height: 76px; }
+  .bar-col { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; min-width: 14px; }
+  .bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 2px; }
+  .bar.hi { background: var(--green); opacity: 0.9; }
+  .bar.mid { background: var(--gold); opacity: 0.85; }
+  .bar.lo { background: var(--red); opacity: 0.7; }
+  .bar-lbl { font-size: 7px; font-family: 'DM Mono', monospace; color: var(--muted); writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+  .chart-meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); }
+  .chart-meta b { color: var(--gold); font-size: 12px; font-weight: 400; }
+  .empty-chart { color: var(--muted); font-size: 11px; font-family: 'DM Mono', monospace; text-align: center; padding: 16px 0; }
+
+  .stats-wrap { padding: 0 20px; }
+  .stat-block { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 10px; }
+  .stat-block-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-family: 'DM Mono', monospace; color: var(--muted); margin-bottom: 12px; }
+  .hero-grid { display: grid; gap: 8px; }
+  .hero-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .hero-grid.two { grid-template-columns: 1fr 1fr; }
+  .hero-cell { text-align: center; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 6px; }
+  .hero-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--green); line-height: 1; }
+  .hero-num.gold { color: var(--gold); }
+  .hero-num.red { color: var(--red); }
+  .hero-lbl { font-size: 9px; font-family: 'DM Mono', monospace; color: var(--muted); letter-spacing: 1px; margin-top: 3px; text-transform: uppercase; }
+  .tc-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .tc-row:last-child { border-bottom: none; }
+  .tc-icon { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
+  .tc-info { flex: 1; }
+  .tc-name { font-size: 12px; color: var(--white); margin-bottom: 4px; }
+  .tc-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .tc-fill { height: 100%; border-radius: 2px; }
+  .tc-pct { font-size: 11px; font-family: 'DM Mono', monospace; width: 32px; text-align: right; flex-shrink: 0; }
+
+  /* Legend */
+  .legend { display: flex; gap: 14px; padding: 0 20px 12px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 </style>
-
 </head>
 <body>
 
@@ -180,7 +185,7 @@
 <div class="prog-section">
   <div class="prog-meta">
     <div class="prog-label">Today's Progress</div>
-    <div class="prog-count" id="progCount">0 / 10</div>
+    <div class="prog-count" id="progCount">0 / 15</div>
   </div>
   <div class="prog-track">
     <div class="prog-fill" id="progFill" style="width:0%"></div>
@@ -196,9 +201,10 @@
 </div>
 
 <!-- TODAY -->
-
 <div class="section visible" id="secToday">
-  <div class="tasks-wrap" id="taskList"></div>
+
+  <div class="task-section-label"><span>Core Rules · Pass/Fail</span></div>
+  <div class="tasks-wrap" id="taskListCore"></div>
 
   <div class="workout-card" id="workoutCard">
     <div class="workout-header" onclick="toggleWorkout()">
@@ -210,6 +216,13 @@
     </div>
     <div class="workout-body" id="wsBody"></div>
   </div>
+
+  <div class="task-section-label" style="margin-top:8px"><span>Daily Habits</span></div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--red);opacity:0.7"></div>Hard rule</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Build the habit</div>
+  </div>
+  <div class="tasks-wrap" id="taskListHabits"></div>
 
   <div class="score-card conf">
     <div class="score-label">Confidence Score · out of 5</div>
@@ -252,52 +265,60 @@
     <div class="sub" id="passBannerSub"></div>
   </div>
 
-<button class="reset-btn" onclick="confirmReset()">Reset Today</button>
-
+  <button class="reset-btn" onclick="confirmReset()">Reset Today</button>
 </div>
 
 <!-- HISTORY -->
-
 <div class="section" id="secHistory">
   <div class="hist-wrap" id="histList"></div>
 </div>
 
 <!-- TRENDS -->
-
 <div class="section" id="secTrends">
   <div id="trendsContent"></div>
 </div>
 
 <!-- STATS -->
-
 <div class="section" id="secStats">
   <div class="stats-wrap" id="statsContent"></div>
 </div>
 
 <script>
-// ── CONFIG ──────────────────────────────────────────────────────────
-const CHALLENGE_START = new Date(2026,3,13); // April 13
+const CHALLENGE_START = new Date(2026,4,19);
 const CHALLENGE_DAYS  = 75;
-const PASS_THRESHOLD  = 7;
-const FOOTY_DAYS      = [2,4,6]; // Tue,Thu,Sat
-const GYM_DAYS        = [1,3,5]; // Mon,Wed,Fri
+const NON_NEGOTIABLES = ['noalc','nogamble','noporn','bed','makebed'];
+const EXTRAS_NEEDED   = 4;
+const FOOTY_DAYS      = [2,4,6];
+const GYM_DAYS        = [1,3,5];
 const WEEKDAYS        = [1,2,3,4,5];
 
 const CONF_HINTS   = ['','Rough day — keep going 💪','Getting there','Solid day','Feeling good!','Unstoppable 🔥'];
 const ENERGY_HINTS = ['','Running on empty','A bit flat','Decent','Feeling good','Full tank 🔋'];
 
-const TASKS = [
-  { id:'train',    icon:'💪', name:'Train',              sub:'Gym (Mon/Wed/Fri) or footy (Tue/Thu/Sat)',      days:[0,1,2,3,4,5,6], footyDays:true },
-  { id:'read',     icon:'📖', name:'Read 10+ Pages',     sub:'Any book — minimum 10 pages',                   days:'all' },
+// CORE tasks (original 10) — count toward pass threshold
+const CORE_TASKS = [
+  { id:'train',    icon:'💪', name:'Train',                 sub:'Gym (Mon/Wed/Fri) or footy (Tue/Thu/Sat)',      days:[0,1,2,3,4,5,6], footyDays:true },
+  { id:'read',     icon:'📖', name:'Read 10+ Pages',        sub:'Any book — minimum 10 pages',                   days:'all' },
   { id:'protein',  icon:'🥗', name:'Hit Protein & No Junk', sub:'~160g protein · whole food lunch & dinner · no takeaway/snacks/soft drink', days:'all' },
-  { id:'bed',      icon:'😴', name:'In Bed by 10:30pm',  sub:'Lights out — not just in bed scrolling',        days:'all' },
-  { id:'social',   icon:'📱', name:'Social Under 1hr',   sub:'Instagram + YouTube combined under 60 mins',    days:'all' },
-  { id:'noalc',    icon:'🚫', name:'No Alcohol',         sub:'Zero drinks — no exceptions',                   days:'all' },
-  { id:'nogamble', icon:'🎰', name:'No Gambling',        sub:'No sports bets, pokies, nothing',               days:'all' },
-  { id:'deepwork', icon:'⚡', name:'Deep Work Block',    sub:'At least 1 focused hour — no distractions',     days:WEEKDAYS },
-  { id:'gratitude',icon:'🙏', name:'Gratitude Written',  sub:'Fill in the note below — one sentence minimum', days:'all' },
-  { id:'noporn',   icon:'🔞', name:'No Porn',            sub:'Clean day',                                     days:'all' },
+  { id:'bed',      icon:'😴', name:'In Bed by 10:30pm',     sub:'Lights out — not just in bed scrolling',        days:'all' },
+  { id:'social',   icon:'📱', name:'Social Under 1hr',      sub:'Instagram + YouTube combined under 60 mins',    days:'all' },
+  { id:'noalc',    icon:'🚫', name:'No Alcohol',            sub:'Zero drinks — no exceptions',                   days:'all' },
+  { id:'nogamble', icon:'🎰', name:'No Gambling',           sub:'No sports bets, pokies, nothing',               days:'all' },
+  { id:'deepwork', icon:'⚡', name:'Deep Work Block',       sub:'At least 1 focused hour — no distractions',     days:WEEKDAYS },
+  { id:'gratitude',icon:'🙏', name:'Gratitude Written',     sub:'Fill in the note below — one sentence minimum', days:'all' },
+  { id:'noporn',   icon:'🔞', name:'No Porn',               sub:'Clean day',                                     days:'all' },
 ];
+
+// HABIT tasks (new 5) — displayed separately, tracked but don't affect pass threshold
+const HABIT_TASKS = [
+  { id:'nophone_am',  icon:'🌅', name:'No Phone First 30 Mins', sub:'Morning starts phone-free — get up, make the bed first', days:'all', hard:true,  badge:'hard rule' },
+  { id:'makebed',     icon:'🛏️', name:'Make Your Bed',           sub:'Non-negotiable — before you leave the bedroom',         days:'all', hard:true,  badge:'hard rule' },
+  { id:'write10',     icon:'✍️', name:'10 Min Writing Practice', sub:'Pyramid Principle exercise, journal entry, or comms draft', days:WEEKDAYS, hard:true, badge:'hard rule' },
+  { id:'plan_tmrw',   icon:'📋', name:'Plan Tomorrow (15 mins)', sub:'Tonight: block your time, set your 3 priorities',       days:'all', hard:false, badge:'build habit' },
+  { id:'tidy_room',   icon:'🧹', name:'Tidy Your Space',         sub:'Room reset before bed — clear desk, clear mind',        days:'all', hard:false, badge:'build habit' },
+];
+
+const ALL_TASKS = [...CORE_TASKS, ...HABIT_TASKS];
 
 const WORKOUTS = {
   1:{label:'Upper Body · Push',focus:'Chest, Shoulders, Triceps',ex:[
@@ -326,13 +347,11 @@ const WORKOUTS = {
   ]}
 };
 
-// ── STORAGE ─────────────────────────────────────────────────────────
 const LS = {
   get: k => { try { const r=localStorage.getItem(k); return r?JSON.parse(r):null; } catch { return null; } },
   set: (k,v) => { try { localStorage.setItem(k,JSON.stringify(v)); } catch {} }
 };
 
-// ── DATE UTILS ───────────────────────────────────────────────────────
 const today   = new Date();
 const DOW     = today.getDay();
 const isSun   = DOW === 0;
@@ -347,21 +366,20 @@ function getChallengeDay(d) { const a=new Date(d);a.setHours(0,0,0,0);const b=ne
 function fmtLong(d) { return d.toLocaleDateString('en-AU',{weekday:'long',day:'numeric',month:'long'}); }
 function fmtShort(d) { return d.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'}); }
 
-function getActiveTasks(d) {
+function getActiveTasks(d, list) {
   const dow = d.getDay();
-  return TASKS.filter(t => {
+  return list.filter(t => {
     if (t.days === 'all') return true;
-    if (t.footyDays) return true; // train always shows
+    if (t.footyDays) return true;
     return t.days.includes(dow);
   });
 }
 
-// ── STATE ────────────────────────────────────────────────────────────
 const todayKey = dayKey(today);
 let state = LS.get(todayKey) || {};
 const save = () => LS.set(todayKey, state);
 
-// ── HEADER ───────────────────────────────────────────────────────────
+// Header
 const cd = getChallengeDay(today);
 document.getElementById('dateTxt').textContent = fmtLong(today);
 document.getElementById('dayNum').textContent  = cd>=1&&cd<=CHALLENGE_DAYS ? cd : cd>CHALLENGE_DAYS ? '✓' : '—';
@@ -372,7 +390,7 @@ if (isSun)        { pill.textContent='🚶 Rest Day';      pill.className='pill 
 else if (isFooty) { pill.textContent=DOW===6?'🏈 Game Day':'🏈 Training Day'; pill.className='pill pill-g'; }
 else if (isGym)   { pill.textContent=ws?`💪 ${ws.label}`:'💪 Gym Day'; pill.className='pill pill-g'; }
 
-// ── WORKOUT CARD ─────────────────────────────────────────────────────
+// Workout card
 if (ws) {
   document.getElementById('workoutCard').style.display = 'block';
   document.getElementById('wsTitle').textContent = ws.label;
@@ -394,10 +412,8 @@ function toggleWorkout() {
   document.getElementById('wsToggle').textContent   = wsOpen ? '▲' : '▼';
 }
 
-// ── WEIGH IN (Sundays) ───────────────────────────────────────────────
 if (isSun) document.getElementById('weighCard').style.display = 'block';
 
-// ── STAR RATINGS ─────────────────────────────────────────────────────
 function buildStars(cid, key, hints, hid, emoji) {
   const c = document.getElementById(cid);
   const update = () => {
@@ -413,17 +429,14 @@ function buildStars(cid, key, hints, hid, emoji) {
 buildStars('confStars',   '_conf',   CONF_HINTS,   'confHint',   '⭐');
 buildStars('energyStars', '_energy', ENERGY_HINTS, 'energyHint', '⚡');
 
-// ── NUM INPUTS ───────────────────────────────────────────────────────
 function saveNum(key, val) { state[key] = val ? parseFloat(val) : null; save(); }
 if (state._sleep)  document.getElementById('sleepInput').value  = state._sleep;
 if (state._weight) document.getElementById('weighInput').value  = state._weight;
 
-// ── GRATITUDE ────────────────────────────────────────────────────────
 function saveGrat() {
   state._gratitude = document.getElementById('gratInput').value;
   save();
   document.getElementById('gratCount').textContent = `${state._gratitude.length} / 300`;
-  // auto-check gratitude task if they've written something
   if (state._gratitude.trim().length > 0) { state['gratitude'] = true; save(); renderTasks(); }
 }
 if (state._gratitude) {
@@ -431,18 +444,18 @@ if (state._gratitude) {
   document.getElementById('gratCount').textContent = `${state._gratitude.length} / 300`;
 }
 
-// ── TASKS ────────────────────────────────────────────────────────────
-const activeTasks = getActiveTasks(today);
+const activeCore   = getActiveTasks(today, CORE_TASKS);
+const activeHabits = getActiveTasks(today, HABIT_TASKS);
+const allActive    = [...activeCore, ...activeHabits];
 
-function renderTasks() {
-  const list = document.getElementById('taskList');
+function renderTaskList(tasks, containerId, cardClass) {
+  const list = document.getElementById(containerId);
   list.innerHTML = '';
-  activeTasks.forEach(t => {
+  tasks.forEach(t => {
     const done = !!state[t.id];
     const div = document.createElement('div');
-    div.className = 'task-card' + (done ? ' done' : '');
+    div.className = `task-card ${cardClass}` + (done ? ' done' : '');
 
-    // Custom sub for train task
     let sub = t.sub;
     if (t.id === 'train') {
       if (isFooty) sub = DOW===6 ? '🏈 Game day — you\'re playing' : '🏈 Training tonight';
@@ -451,9 +464,14 @@ function renderTasks() {
       else sub = '💪 Gym day';
     }
 
+    const badgeHtml = t.badge
+      ? `<div class="task-badge ${t.hard ? 'badge-hard' : 'badge-soft'}">${t.badge}</div><br>`
+      : '';
+
     div.innerHTML = `
       <div class="task-icon">${t.icon}</div>
       <div class="task-info">
+        ${badgeHtml}
         <div class="task-name">${t.name}</div>
         <div class="task-sub">${sub}</div>
       </div>
@@ -461,34 +479,55 @@ function renderTasks() {
     div.onclick = () => { state[t.id] = !state[t.id]; save(); renderTasks(); };
     list.appendChild(div);
   });
+}
 
-  const done  = activeTasks.filter(t => state[t.id]).length;
-  const total = activeTasks.length;
-  const passing = done >= PASS_THRESHOLD;
-  const eod = done === total;
+function renderTasks() {
+  renderTaskList(activeCore,   'taskListCore',   '');
+  renderTaskList(activeHabits, 'taskListHabits', 'habit-card');
 
-  document.getElementById('progCount').textContent = `${done} / ${total}`;
-  document.getElementById('progFill').style.width  = `${total>0 ? done/total*100 : 0}%`;
+  const totalDone  = allActive.filter(t => state[t.id]).length;
+  const totalAll   = allActive.length;
+
+  const activeNN   = NON_NEGOTIABLES.filter(id => allActive.find(t => t.id === id));
+  const nnHit      = activeNN.filter(id => state[id]);
+  const nnAllDone  = nnHit.length === activeNN.length;
+  const nnMissing  = activeNN.filter(id => !state[id]);
+
+  const extraTasks = allActive.filter(t => !NON_NEGOTIABLES.includes(t.id));
+  const extrasDone = extraTasks.filter(t => state[t.id]).length;
+  const strongDay  = nnAllDone && extrasDone >= EXTRAS_NEEDED;
+  const perfectDay = totalDone === totalAll;
+
+  document.getElementById('progCount').textContent = totalDone + ' / ' + totalAll;
+  document.getElementById('progFill').style.width  = (totalAll>0 ? totalDone/totalAll*100 : 0) + '%';
 
   const ind = document.getElementById('passInd');
-  if (done >= PASS_THRESHOLD) {
-    ind.textContent = `✓ Passing — ${done}/${PASS_THRESHOLD} minimum hit`;
+  if (!nnAllDone) {
+    const n = nnMissing.length;
+    ind.textContent = n + ' non-negotiable' + (n>1?'s':'') + ' still outstanding';
+    ind.className   = 'pass-indicator failing';
+  } else if (!strongDay) {
+    const need = EXTRAS_NEEDED - extrasDone;
+    ind.textContent = '✓ Foundation locked — ' + need + ' more extra' + (need>1?'s':'') + ' for a strong day';
     ind.className   = 'pass-indicator passing';
   } else {
-    const need = PASS_THRESHOLD - done;
-    ind.textContent = `Need ${need} more to pass today`;
-    ind.className   = 'pass-indicator failing';
+    ind.textContent = '❆ Strong day — foundation + ' + extrasDone + ' extras';
+    ind.className   = 'pass-indicator passing';
   }
 
   const banner = document.getElementById('passBanner');
-  if (eod) {
+  if (perfectDay) {
     banner.className = 'pass-banner visible win';
-    document.getElementById('passBannerText').textContent = '✦ PERFECT DAY ✦';
-    document.getElementById('passBannerSub').textContent  = '10/10. That\'s a day that compounds.';
-  } else if (passing) {
+    document.getElementById('passBannerText').textContent = '❆ PERFECT DAY ❆';
+    document.getElementById('passBannerSub').textContent  = totalAll + '/' + totalAll + '. That's a day that compounds.';
+  } else if (strongDay) {
     banner.className = 'pass-banner visible win';
-    document.getElementById('passBannerText').textContent = `✓ DAY PASSED — ${done}/10`;
-    document.getElementById('passBannerSub').textContent  = 'Minimum hit. Keep ticking off the rest.';
+    document.getElementById('passBannerText').textContent = '❆ STRONG DAY';
+    document.getElementById('passBannerSub').textContent  = 'Foundation hit + ' + extrasDone + ' extras. Keep stacking.';
+  } else if (nnAllDone) {
+    banner.className = 'pass-banner visible win';
+    document.getElementById('passBannerText').textContent = '✓ FOUNDATION DONE';
+    document.getElementById('passBannerSub').textContent  = 'Non-negotiables locked. Stack ' + (EXTRAS_NEEDED - extrasDone) + ' more extras.';
   } else {
     banner.className = 'pass-banner';
   }
@@ -505,7 +544,6 @@ function confirmReset() {
   }
 }
 
-// ── TABS ──────────────────────────────────────────────────────────────
 const tabBtns = document.querySelectorAll('.tab');
 function switchTab(name) {
   const names = ['today','history','trends','stats'];
@@ -519,31 +557,35 @@ function switchTab(name) {
   if (name==='stats')   renderStats();
 }
 
-// ── HISTORY ───────────────────────────────────────────────────────────
 function renderHistory() {
   const keys = allKeys().reverse();
   const el = document.getElementById('histList');
   if (!keys.length) { el.innerHTML='<div style="color:var(--muted);text-align:center;padding:40px 0;font-size:13px;font-family:monospace">No history yet.</div>'; return; }
   el.innerHTML = keys.map(k => {
-    const d=keyToDate(k), data=LS.get(k)||{}, tasks=getActiveTasks(d);
-    const done=tasks.filter(t=>data[t.id]).length, total=tasks.length;
-    const pass=done>=PASS_THRESHOLD;
+    const d=keyToDate(k), data=LS.get(k)||{};
+    const coreTasks=getActiveTasks(d,CORE_TASKS), habitTasks=getActiveTasks(d,HABIT_TASKS);
+    const coreDone=coreTasks.filter(t=>data[t.id]).length;
+    const habitDone=habitTasks.filter(t=>data[t.id]).length;
+    const totalDone=coreDone+habitDone;
+    const nnDone=NON_NEGOTIABLES.filter(id=>coreTasks.concat(habitTasks).find(t=>t.id===id)&&data[id]).length; const nnTotal=NON_NEGOTIABLES.filter(id=>coreTasks.concat(habitTasks).find(t=>t.id===id)).length; const pass=nnDone===nnTotal;
     const cd=getChallengeDay(d);
     const dlbl=cd>=1&&cd<=CHALLENGE_DAYS?` · Day ${cd}`:'';
-    const dots=tasks.map(t=>`<div class="dot${data[t.id]?' on':''}"></div>`).join('');
+    const coreDots=coreTasks.map(t=>`<div class="dot${data[t.id]?' on':''}"></div>`).join('');
+    const habitDots=habitTasks.map(t=>`<div class="dot habit${data[t.id]?' on':''}"></div>`).join('');
     const grat=data._gratitude?`<div style="margin-top:7px;font-size:12px;font-style:italic;opacity:0.65;line-height:1.4">"${data._gratitude}"</div>`:'';
     const wt=data._weight?`<div style="margin-top:4px;font-size:11px;font-family:monospace;color:var(--gold)">⚖️ ${data._weight}kg</div>`:'';
     return `<div class="hist-day">
       <div class="hist-header">
         <div class="hist-date">${fmtShort(d)}<span style="color:var(--gold)">${dlbl}</span></div>
-        <div class="hist-score ${pass?'pass':'fail'}">${done}/${total}</div>
+        <div class="hist-score ${pass?'pass':'fail'}">${totalDone}/${coreTasks.length+habitTasks.length}</div>
       </div>
-      <div class="dots">${dots}</div>${wt}${grat}
+      <div class="dots">${coreDots}</div>
+      <div class="dots" style="margin-top:4px">${habitDots}</div>
+      ${wt}${grat}
     </div>`;
   }).join('');
 }
 
-// ── CHART HELPERS ─────────────────────────────────────────────────────
 function barCls(pct) { return pct>=75?'hi':pct>=50?'mid':'lo'; }
 
 function renderBars(containerId, entries, {maxVal, isBinary, suffix=''}) {
@@ -567,30 +609,41 @@ function renderBars(containerId, entries, {maxVal, isBinary, suffix=''}) {
     </div>`;
 }
 
-// ── TRENDS ────────────────────────────────────────────────────────────
 function renderTrends() {
   const keys = allKeys();
   const conf=[],energy=[],sleep=[],weight=[],screen=[],work=[],pass=[];
+  const nophone=[],makebed=[],write10=[],plan=[],tidy=[];
+
   keys.forEach(k => {
     const data=LS.get(k)||{}, d=keyToDate(k), lbl=fmtShort(d);
-    const tasks=getActiveTasks(d), done=tasks.filter(t=>data[t.id]).length;
+    const coreTasks=getActiveTasks(d,CORE_TASKS), done=coreTasks.filter(t=>data[t.id]).length;
     if (data._conf   != null) conf.push({lbl,v:data._conf});
     if (data._energy != null) energy.push({lbl,v:data._energy});
     if (data._sleep  != null) sleep.push({lbl,v:data._sleep});
     if (d.getDay()===0 && data._weight!=null) weight.push({lbl,v:data._weight});
     screen.push({lbl,v:data.social?1:0});
     if (WEEKDAYS.includes(d.getDay())) work.push({lbl,v:data.deepwork?1:0});
-    pass.push({lbl,v:done>=PASS_THRESHOLD?1:0});
+    const dayAllTasks=[...getActiveTasks(d,CORE_TASKS),...getActiveTasks(d,HABIT_TASKS)]; const dayNN=NON_NEGOTIABLES.filter(id=>dayAllTasks.find(t=>t.id===id)); const dayNNHit=dayNN.filter(id=>data[id]); pass.push({lbl,v:dayNNHit.length===dayNN.length?1:0});
+    nophone.push({lbl,v:data.nophone_am?1:0});
+    makebed.push({lbl,v:data.makebed?1:0});
+    if (WEEKDAYS.includes(d.getDay())) write10.push({lbl,v:data.write10?1:0});
+    plan.push({lbl,v:data.plan_tmrw?1:0});
+    tidy.push({lbl,v:data.tidy_room?1:0});
   });
 
   const sections = [
-    {title:'Daily Pass Rate (7/10)',    id:'tc0', entries:pass,   opts:{isBinary:true}},
-    {title:'Confidence · /5',           id:'tc1', entries:conf,   opts:{maxVal:5,suffix:'/5'}},
-    {title:'Energy · /5',               id:'tc2', entries:energy, opts:{maxVal:5,suffix:'/5'}},
-    {title:'Sleep Score · /100',        id:'tc3', entries:sleep,  opts:{maxVal:100,suffix:''}},
-    {title:'Social Under 1hr',          id:'tc4', entries:screen, opts:{isBinary:true}},
-    {title:'Deep Work Block · Weekdays',id:'tc5', entries:work,   opts:{isBinary:true}},
-    {title:'Body Weight · Sundays',     id:'tc6', entries:weight, opts:{maxVal:null}},
+    {title:'Foundation Hit (all non-negotiables)',   id:'tc0', entries:pass,    opts:{isBinary:true}},
+    {title:'Confidence · /5',               id:'tc1', entries:conf,    opts:{maxVal:5,suffix:'/5'}},
+    {title:'Energy · /5',                   id:'tc2', entries:energy,  opts:{maxVal:5,suffix:'/5'}},
+    {title:'Sleep Score · /100',            id:'tc3', entries:sleep,   opts:{maxVal:100,suffix:''}},
+    {title:'Social Under 1hr',              id:'tc4', entries:screen,  opts:{isBinary:true}},
+    {title:'Deep Work Block · Weekdays',    id:'tc5', entries:work,    opts:{isBinary:true}},
+    {title:'No Phone First 30 Mins',        id:'tc6', entries:nophone, opts:{isBinary:true}},
+    {title:'Made Bed',                      id:'tc7', entries:makebed, opts:{isBinary:true}},
+    {title:'Writing Practice · Weekdays',   id:'tc8', entries:write10, opts:{isBinary:true}},
+    {title:'Planned Tomorrow',              id:'tc9', entries:plan,    opts:{isBinary:true}},
+    {title:'Tidied Space',                  id:'tc10',entries:tidy,    opts:{isBinary:true}},
+    {title:'Body Weight · Sundays',         id:'tc11',entries:weight,  opts:{maxVal:null}},
   ];
 
   document.getElementById('trendsContent').innerHTML = sections.map(s=>`
@@ -601,7 +654,6 @@ function renderTrends() {
   sections.forEach(s => renderBars(s.id, s.entries, s.opts));
 }
 
-// ── STATS ─────────────────────────────────────────────────────────────
 function renderStats() {
   const keys = allKeys();
   const el = document.getElementById('statsContent');
@@ -609,40 +661,56 @@ function renderStats() {
 
   let totalT=0, doneT=0, passD=0, perfectD=0, run=0, bestStr=0;
   const ts = {};
-  TASKS.forEach(t => { ts[t.id]={name:t.name,icon:t.icon,done:0,app:0}; });
+  ALL_TASKS.forEach(t => { ts[t.id]={name:t.name,icon:t.icon,done:0,app:0,isHabit:!!t.badge}; });
 
   keys.forEach(k => {
-    const data=LS.get(k)||{}, d=keyToDate(k), tasks=getActiveTasks(d);
-    const dn=tasks.filter(t=>data[t.id]).length;
-    totalT+=tasks.length; doneT+=dn;
-    if (dn>=PASS_THRESHOLD) { passD++; run++; bestStr=Math.max(bestStr,run); } else run=0;
-    if (dn===tasks.length)  perfectD++;
-    tasks.forEach(t => { ts[t.id].app++; if(data[t.id]) ts[t.id].done++; });
+    const data=LS.get(k)||{}, d=keyToDate(k);
+    const coreTasks=getActiveTasks(d,CORE_TASKS), habitTasks=getActiveTasks(d,HABIT_TASKS);
+    const allT=[...coreTasks,...habitTasks];
+    const coreDn=coreTasks.filter(t=>data[t.id]).length;
+    const allDn=allT.filter(t=>data[t.id]).length;
+    totalT+=allT.length; doneT+=allDn;
+    const allDayT=[...coreTasks,...habitTasks]; const dayNN2=NON_NEGOTIABLES.filter(id=>allDayT.find(t=>t.id===id)); const dayNNDone=dayNN2.filter(id=>data[id]); if (dayNNDone.length===dayNN2.length) { passD++; run++; bestStr=Math.max(bestStr,run); } else run=0;
+    if (allDn===allT.length)  perfectD++;
+    allT.forEach(t => { ts[t.id].app++; if(data[t.id]) ts[t.id].done++; });
   });
 
-  // current streak
   let cur=0; const t2=new Date(); t2.setHours(0,0,0,0);
   let dd=new Date(t2); dd.setDate(dd.getDate()-1);
   while(true) {
     const k=dayKey(dd), data=LS.get(k);
     if (!data) break;
-    const tasks=getActiveTasks(dd);
-    if (tasks.filter(t=>data[t.id]).length < PASS_THRESHOLD) break;
+    const tasks=getActiveTasks(dd,CORE_TASKS);
+    const histNN=NON_NEGOTIABLES.filter(id=>tasks.find(t=>t.id===id)); if (histNN.filter(id=>data[id]).length < histNN.length) break;
     cur++; dd.setDate(dd.getDate()-1);
   }
   const td=LS.get(todayKey);
-  if (td && getActiveTasks(today).filter(t=>td[t.id]).length >= PASS_THRESHOLD) cur++;
+  const todayAllT=[...getActiveTasks(today,CORE_TASKS),...getActiveTasks(today,HABIT_TASKS)]; const todayNN=NON_NEGOTIABLES.filter(id=>todayAllT.find(t=>t.id===id)); if (td && todayNN.filter(id=>td[id]).length===todayNN.length) cur++;
 
   const pct = totalT>0 ? Math.round(doneT/totalT*100) : 0;
-  const sorted = Object.values(ts).filter(t=>t.app>0).sort((a,b)=>(b.done/b.app)-(a.done/a.app));
+  const coreSorted  = Object.values(ts).filter(t=>t.app>0&&!t.isHabit).sort((a,b)=>(b.done/b.app)-(a.done/a.app));
+  const habitSorted = Object.values(ts).filter(t=>t.app>0&&t.isHabit).sort((a,b)=>(b.done/b.app)-(a.done/a.app));
+
+  const tcRow = (t, col) => {
+    const p=Math.round(t.done/t.app*100);
+    const c=p>=80?'var(--green)':p>=60?'var(--gold)':'var(--red)';
+    return `<div class="tc-row">
+      <div class="tc-icon">${t.icon}</div>
+      <div class="tc-info">
+        <div class="tc-name">${t.name}</div>
+        <div class="tc-track"><div class="tc-fill" style="width:${p}%;background:${c}"></div></div>
+      </div>
+      <div class="tc-pct" style="color:${c}">${p}%</div>
+    </div>`;
+  };
 
   el.innerHTML = `
     <div class="stat-block">
       <div class="stat-block-title">Overall · ${keys.length} days logged</div>
       <div class="hero-grid three">
         <div class="hero-cell"><div class="hero-num">${pct}%</div><div class="hero-lbl">Completion</div></div>
-        <div class="hero-cell"><div class="hero-num gold">${passD}</div><div class="hero-lbl">Days Passed</div></div>
-        <div class="hero-cell"><div class="hero-num">${perfectD}</div><div class="hero-lbl">Perfect 10s</div></div>
+        <div class="hero-cell"><div class="hero-num gold">${passD}</div><div class="hero-lbl">Foundation Days</div></div>
+        <div class="hero-cell"><div class="hero-num">${perfectD}</div><div class="hero-lbl">Perfect Days</div></div>
       </div>
     </div>
     <div class="stat-block">
@@ -653,22 +721,14 @@ function renderStats() {
       </div>
     </div>
     <div class="stat-block">
-      <div class="stat-block-title">Consistency By Task</div>
-      ${sorted.map(t => {
-        const p=Math.round(t.done/t.app*100);
-        const col=p>=80?'var(--green)':p>=60?'var(--gold)':'var(--red)';
-        return `<div class="tc-row">
-          <div class="tc-icon">${t.icon}</div>
-          <div class="tc-info">
-            <div class="tc-name">${t.name}</div>
-            <div class="tc-track"><div class="tc-fill" style="width:${p}%;background:${col}"></div></div>
-          </div>
-          <div class="tc-pct" style="color:${col}">${p}%</div>
-        </div>`;
-      }).join('')}
+      <div class="stat-block-title">Core Task Consistency</div>
+      ${coreSorted.map(t=>tcRow(t)).join('')}
+    </div>
+    <div class="stat-block" style="border-color:rgba(74,184,240,0.2)">
+      <div class="stat-block-title" style="color:var(--blue)">Habit Consistency</div>
+      ${habitSorted.map(t=>tcRow(t)).join('')}
     </div>`;
 }
 </script>
-
 </body>
 </html>
