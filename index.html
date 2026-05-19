@@ -306,16 +306,16 @@ const CORE_TASKS = [
   { id:'nogamble', icon:'🎰', name:'No Gambling',           sub:'No sports bets, pokies, nothing',               days:'all' },
   { id:'deepwork', icon:'⚡', name:'Deep Work Block',       sub:'At least 1 focused hour — no distractions',     days:WEEKDAYS },
   { id:'gratitude',icon:'🙏', name:'Gratitude Written',     sub:'Fill in the note below — one sentence minimum', days:'all' },
-  { id:'noporn',   icon:'🔞', name:'No Porn',               sub:'Clean day',                                     days:'all' },
+  { id:'noporn',   icon:'🧴', name:'Skincare Routine',       sub:'Cleanser, moisturiser, SPF — 2 mins morning and night', days:'all' },
 ];
 
 // HABIT tasks (new 5) — displayed separately, tracked but don't affect pass threshold
 const HABIT_TASKS = [
-  { id:'nophone_am',  icon:'🌅', name:'No Phone First 30 Mins', sub:'Morning starts phone-free — get up, make the bed first', days:'all', hard:true,  badge:'hard rule' },
-  { id:'makebed',     icon:'🛏️', name:'Make Your Bed',           sub:'Non-negotiable — before you leave the bedroom',         days:'all', hard:true,  badge:'hard rule' },
-  { id:'write10',     icon:'✍️', name:'10 Min Writing Practice', sub:'Pyramid Principle exercise, journal entry, or comms draft', days:WEEKDAYS, hard:true, badge:'hard rule' },
-  { id:'plan_tmrw',   icon:'📋', name:'Plan Tomorrow (15 mins)', sub:'Tonight: block your time, set your 3 priorities',       days:'all', hard:false, badge:'build habit' },
-  { id:'tidy_room',   icon:'🧹', name:'Tidy Your Space',         sub:'Room reset before bed — clear desk, clear mind',        days:'all', hard:false, badge:'build habit' },
+  { id:'nophone_am',  icon:'📵', name:'Phone Off by 10:10pm',    sub:'10:10pm · Phone down, pick up your book — 20 mins reading before lights out', days:'all', hard:true,  badge:'hard rule' },
+  { id:'makebed',     icon:'🛏️', name:'Make Your Bed',           sub:'Morning · Before you leave the bedroom — sets the tone', days:'all', hard:true,  badge:'hard rule' },
+  { id:'write10',     icon:'✍️', name:'10 Min Writing Practice', sub:'Morning or lunch · Pyramid Principle exercise, journal entry, or comms draft', days:WEEKDAYS, hard:true, badge:'hard rule' },
+  { id:'plan_tmrw',   icon:'📋', name:'Plan Tomorrow (15 mins)', sub:'9:30–10:00pm · Block your time, set your 3 priorities for tomorrow', days:'all', hard:false, badge:'build habit' },
+  { id:'tidy_room',   icon:'🧹', name:'Tidy Your Space',         sub:'10:00pm · 5 min room reset before bed — clear desk, clear mind', days:'all', hard:false, badge:'build habit' },
 ];
 
 const ALL_TASKS = [...CORE_TASKS, ...HABIT_TASKS];
@@ -519,7 +519,7 @@ function renderTasks() {
   if (perfectDay) {
     banner.className = 'pass-banner visible win';
     document.getElementById('passBannerText').textContent = '❆ PERFECT DAY ❆';
-    document.getElementById('passBannerSub').textContent  = totalAll + '/' + totalAll + '. That's a day that compounds.';
+    document.getElementById('passBannerSub').textContent  = totalAll + "/" + totalAll + ". That's a day that compounds.";
   } else if (strongDay) {
     banner.className = 'pass-banner visible win';
     document.getElementById('passBannerText').textContent = '❆ STRONG DAY';
