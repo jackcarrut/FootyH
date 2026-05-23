@@ -160,6 +160,50 @@
   .tc-fill { height: 100%; border-radius: 2px; }
   .tc-pct { font-size: 11px; font-family: 'DM Mono', monospace; width: 32px; text-align: right; flex-shrink: 0; }
 
+  /* ROUTINE TAB */
+  .routine-wrap { padding: 0 20px; }
+  .routine-day-tabs { display: flex; gap: 4px; padding: 0 20px 14px; flex-wrap: wrap; }
+  .rday-btn { flex: 1; min-width: 36px; text-align: center; padding: 6px 2px; border-radius: 8px; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; font-family: 'DM Mono', monospace; cursor: pointer; border: 1px solid var(--border); background: none; color: var(--muted); -webkit-tap-highlight-color: transparent; }
+  .rday-btn.active { background: var(--gold); color: #0d0d0d; border-color: var(--gold); font-weight: 700; }
+  .timeline { position: relative; padding-left: 0; }
+  .timeline::before { content: ''; position: absolute; left: 52px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .tl-block { display: flex; gap: 0; margin-bottom: 4px; align-items: flex-start; }
+  .tl-time { width: 52px; font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--muted); text-align: right; padding-right: 14px; padding-top: 10px; flex-shrink: 0; line-height: 1; }
+  .tl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 13px; margin-right: 12px; position: relative; z-index: 1; }
+  .tl-card { flex: 1; border-radius: 10px; padding: 10px 13px; margin-bottom: 1px; }
+  .tl-label { font-size: 12px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+  .tl-sub { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); line-height: 1.5; }
+  .tl-duration { font-size: 9px; font-family: 'DM Mono', monospace; letter-spacing: 1px; margin-top: 4px; display: inline-block; padding: 2px 7px; border-radius: 4px; }
+
+  .cat-morning  { background: rgba(245,200,66,0.08); border: 1px solid rgba(245,200,66,0.15); }
+  .cat-training { background: rgba(184,240,74,0.07); border: 1px solid rgba(184,240,74,0.15); }
+  .cat-work     { background: rgba(74,184,240,0.07); border: 1px solid rgba(74,184,240,0.12); }
+  .cat-evening  { background: rgba(192,132,252,0.07); border: 1px solid rgba(192,132,252,0.12); }
+  .cat-wind     { background: rgba(255,255,255,0.03); border: 1px solid var(--border); }
+  .cat-free     { background: rgba(255,255,255,0.02); border: 1px solid var(--border); }
+
+  .dot-morning  { background: var(--gold); }
+  .dot-training { background: var(--green); }
+  .dot-work     { background: var(--blue); }
+  .dot-evening  { background: var(--purple); }
+  .dot-wind     { background: #888; }
+  .dot-free     { background: var(--border); }
+
+  .dur-morning  { background: rgba(245,200,66,0.15); color: var(--gold); }
+  .dur-training { background: rgba(184,240,74,0.12); color: var(--green); }
+  .dur-work     { background: rgba(74,184,240,0.12); color: var(--blue); }
+  .dur-evening  { background: rgba(192,132,252,0.12); color: var(--purple); }
+  .dur-wind     { background: rgba(255,255,255,0.06); color: #aaa; }
+  .dur-free     { background: rgba(255,255,255,0.04); color: var(--muted); }
+
+  .routine-header { padding: 14px 20px 6px; }
+  .routine-day-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 1px; line-height: 1; }
+  .routine-day-sub { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); margin-top: 3px; }
+  .routine-stats { display: flex; gap: 8px; padding: 0 20px 14px; }
+  .rstat { flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; text-align: center; }
+  .rstat-num { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--gold); line-height: 1; }
+  .rstat-lbl { font-size: 8px; font-family: 'DM Mono', monospace; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
   /* Legend */
   .legend { display: flex; gap: 14px; padding: 0 20px 12px; flex-wrap: wrap; }
   .legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); }
@@ -198,6 +242,7 @@
   <button class="tab" onclick="switchTab('history')">History</button>
   <button class="tab" onclick="switchTab('trends')">Trends</button>
   <button class="tab" onclick="switchTab('stats')">Stats</button>
+  <button class="tab" onclick="switchTab('routine')">Routine</button>
 </div>
 
 <!-- TODAY -->
@@ -266,6 +311,7 @@
   </div>
 
   <button class="reset-btn" onclick="confirmReset()">Reset Today</button>
+  <button class="reset-btn" style="margin-top:8px;border-color:rgba(255,68,68,0.3);color:#ff7070" onclick="confirmClearAll()">Clear All Data</button>
 </div>
 
 <!-- HISTORY -->
@@ -283,10 +329,15 @@
   <div class="stats-wrap" id="statsContent"></div>
 </div>
 
+<!-- ROUTINE -->
+<div class="section" id="secRoutine">
+  <div id="routineContent"></div>
+</div>
+
 <script>
-const CHALLENGE_START = new Date(2026,4,19);
+const CHALLENGE_START = new Date(2026,4,25);
 const CHALLENGE_DAYS  = 75;
-const NON_NEGOTIABLES = ['noalc','nogamble','noporn','bed','makebed'];
+const NON_NEGOTIABLES = ['noalc','nogamble','noporn','bed','makebed','train','protein','rehab','hydration'];
 const EXTRAS_NEEDED   = 4;
 const FOOTY_DAYS      = [2,4,6];
 const GYM_DAYS        = [1,3,5];
@@ -299,7 +350,9 @@ const ENERGY_HINTS = ['','Running on empty','A bit flat','Decent','Feeling good'
 const CORE_TASKS = [
   { id:'train',    icon:'💪', name:'Train',                 sub:'Gym (Mon/Wed/Fri) or footy (Tue/Thu/Sat)',      days:[0,1,2,3,4,5,6], footyDays:true },
   { id:'read',     icon:'📖', name:'Read 10+ Pages',        sub:'Any book — minimum 10 pages',                   days:'all' },
-  { id:'protein',  icon:'🥗', name:'Hit Protein & No Junk', sub:'~160g protein · whole food lunch & dinner · no takeaway/snacks/soft drink', days:'all' },
+  { id:'protein',  icon:'🥗', name:'Eating Habits',         sub:'~160g protein · whole food lunch & dinner · no takeaway, snacks or soft drink', days:'all' },
+  { id:'rehab',    icon:'🦵', name:'Rehab Exercises',       sub:'Evening · Daily groin recovery exercises — non-negotiable for longevity', days:'all' },
+  { id:'hydration',icon:'💧', name:'Hit 2.5L Water',         sub:'Track through the day — bottle by your desk, bottle at training', days:'all' },
   { id:'bed',      icon:'😴', name:'In Bed by 10:30pm',     sub:'Lights out — not just in bed scrolling',        days:'all' },
   { id:'social',   icon:'📱', name:'Social Under 1hr',      sub:'Instagram + YouTube combined under 60 mins',    days:'all' },
   { id:'noalc',    icon:'🚫', name:'No Alcohol',            sub:'Zero drinks — no exceptions',                   days:'all' },
@@ -309,12 +362,13 @@ const CORE_TASKS = [
   { id:'noporn',   icon:'🧴', name:'Skincare Routine',       sub:'Cleanser, moisturiser, SPF — 2 mins morning and night', days:'all' },
 ];
 
-// HABIT tasks (new 5) — displayed separately, tracked but don't affect pass threshold
+// HABIT tasks (new 5) — displayed separately, tracked but don’t affect pass threshold
 const HABIT_TASKS = [
   { id:'nophone_am',  icon:'📵', name:'Phone Off by 10:10pm',    sub:'10:10pm · Phone down, pick up your book — 20 mins reading before lights out', days:'all', hard:true,  badge:'hard rule' },
   { id:'makebed',     icon:'🛏️', name:'Make Your Bed',           sub:'Morning · Before you leave the bedroom — sets the tone', days:'all', hard:true,  badge:'hard rule' },
   { id:'write10',     icon:'✍️', name:'10 Min Writing Practice', sub:'Morning or lunch · Pyramid Principle exercise, journal entry, or comms draft', days:WEEKDAYS, hard:true, badge:'hard rule' },
   { id:'plan_tmrw',   icon:'📋', name:'Plan Tomorrow (15 mins)', sub:'9:30–10:00pm · Block your time, set your 3 priorities for tomorrow', days:'all', hard:false, badge:'build habit' },
+  { id:'mobility',    icon:'🧘', name:'Mobility & Recovery',   sub:'Post-training or evening · 10 mins stretch, foam roll, or breathwork', days:'all', hard:false, badge:'build habit' },
   { id:'tidy_room',   icon:'🧹', name:'Tidy Your Space',         sub:'10:00pm · 5 min room reset before bed — clear desk, clear mind', days:'all', hard:false, badge:'build habit' },
 ];
 
@@ -534,6 +588,19 @@ function renderTasks() {
 }
 renderTasks();
 
+function confirmClearAll() {
+  if (confirm('Delete ALL data including history and trends? This cannot be undone.')) {
+    const keys = allKeys();
+    keys.forEach(k => localStorage.removeItem(k));
+    state = {}; save(); renderTasks();
+    document.getElementById('gratInput').value = '';
+    document.getElementById('gratCount').textContent = '0 / 300';
+    buildStars('confStars',   '_conf',   CONF_HINTS,   'confHint',   '⭐');
+    buildStars('energyStars', '_energy', ENERGY_HINTS, 'energyHint', '⚡');
+    alert('All data cleared.');
+  }
+}
+
 function confirmReset() {
   if (confirm('Reset all tasks for today?')) {
     state = {}; save(); renderTasks();
@@ -546,7 +613,7 @@ function confirmReset() {
 
 const tabBtns = document.querySelectorAll('.tab');
 function switchTab(name) {
-  const names = ['today','history','trends','stats'];
+  const names = ['today','history','trends','stats','routine'];
   tabBtns.forEach((b,i) => b.classList.toggle('active', names[i]===name));
   names.forEach(n => {
     const s = document.getElementById('sec'+n.charAt(0).toUpperCase()+n.slice(1));
@@ -555,6 +622,7 @@ function switchTab(name) {
   if (name==='history') renderHistory();
   if (name==='trends')  renderTrends();
   if (name==='stats')   renderStats();
+  if (name==='routine') renderRoutine();
 }
 
 function renderHistory() {
@@ -612,7 +680,7 @@ function renderBars(containerId, entries, {maxVal, isBinary, suffix=''}) {
 function renderTrends() {
   const keys = allKeys();
   const conf=[],energy=[],sleep=[],weight=[],screen=[],work=[],pass=[];
-  const nophone=[],makebed=[],write10=[],plan=[],tidy=[];
+  const nophone=[],makebed=[],write10=[],plan=[],tidy=[],skincare=[],mobility=[],rehab=[],hydration=[];
 
   keys.forEach(k => {
     const data=LS.get(k)||{}, d=keyToDate(k), lbl=fmtShort(d);
@@ -629,6 +697,10 @@ function renderTrends() {
     if (WEEKDAYS.includes(d.getDay())) write10.push({lbl,v:data.write10?1:0});
     plan.push({lbl,v:data.plan_tmrw?1:0});
     tidy.push({lbl,v:data.tidy_room?1:0});
+    skincare.push({lbl,v:data.noporn?1:0});
+    mobility.push({lbl,v:data.mobility?1:0});
+    rehab.push({lbl,v:data.rehab?1:0});
+    hydration.push({lbl,v:data.hydration?1:0});
   });
 
   const sections = [
@@ -644,6 +716,10 @@ function renderTrends() {
     {title:'Planned Tomorrow',              id:'tc9', entries:plan,    opts:{isBinary:true}},
     {title:'Tidied Space',                  id:'tc10',entries:tidy,    opts:{isBinary:true}},
     {title:'Body Weight · Sundays',         id:'tc11',entries:weight,  opts:{maxVal:null}},
+    {title:'Skincare Routine',               id:'tc12',entries:skincare, opts:{isBinary:true}},
+    {title:'Rehab Exercises · Daily',        id:'tc13',entries:rehab,    opts:{isBinary:true}},
+    {title:'Hydration · 2.5L',              id:'tc14',entries:hydration, opts:{isBinary:true}},
+    {title:'Mobility & Recovery',           id:'tc15',entries:mobility,  opts:{isBinary:true}},
   ];
 
   document.getElementById('trendsContent').innerHTML = sections.map(s=>`
@@ -728,6 +804,165 @@ function renderStats() {
       <div class="stat-block-title" style="color:var(--blue)">Habit Consistency</div>
       ${habitSorted.map(t=>tcRow(t)).join('')}
     </div>`;
+}
+
+// ── ROUTINE ────────────────────────────────────────────────────────
+const SCHEDULES = {
+  // MON / WED / FRI - Gym days
+  gym: {
+    label: 'Gym Day',
+    sub: 'Monday · Wednesday · Friday',
+    wakeup: '5:30AM',
+    bedtime: '10:30PM',
+    blocks: [
+      { time:'5:30', label:'Wake Up', sub:'Phone off, make bed immediately, skincare', cat:'morning', dur:'15 min' },
+      { time:'5:45', label:'Gym Session', sub:'Upper push / Lower / Upper pull — see workout tab', cat:'training', dur:'45 min' },
+      { time:'6:30', label:'Post-Gym & Get Ready', sub:'Shower, breakfast, pack bag — hit 2.5L water target through the day', cat:'morning', dur:'40 min' },
+      { time:'7:10', label:'Leave for Work', sub:'Out the door — 7:30 start', cat:'work', dur:'' },
+      { time:'7:30', label:'Work', sub:'Deep work block first — no meetings, no distractions for the first hour', cat:'work', dur:'~9 hrs' },
+      { time:'12:00', label:'Lunch', sub:'Whole food meal — protein target front of mind, no takeaway', cat:'work', dur:'30 min' },
+      { time:'16:30', label:'Wrap Up Work', sub:'Finish strong, clear your desk and plan wrap', cat:'work', dur:'30 min' },
+      { time:'17:00', label:'Free Time / Recovery', sub:'Decompress, mobility work (10 mins) — walk, stretch, no social media', cat:'free', dur:'2 hrs' },
+      { time:'19:00', label:'Reset Time — Sammy', sub:'Protected time — dinner together, decompress, be present', cat:'free', dur:'2 hrs' },
+      { time:'21:00', label:'Evening Rehab', sub:'Groin recovery exercises — non-negotiable every night', cat:'evening', dur:'20 min' },
+      { time:'21:20', label:'Plan Tomorrow', sub:'15 mins — block your time, set 3 priorities, lay out gear', cat:'wind', dur:'15 min' },
+      { time:'21:35', label:'Tidy Space', sub:'5 min room reset — clear desk, clear mind', cat:'wind', dur:'10 min' },
+      { time:'21:45', label:'Gratitude + Skincare', sub:'Write one thing you’re grateful for, full skincare routine', cat:'wind', dur:'15 min' },
+      { time:'22:10', label:'Phone Off — Read', sub:'Phone down for the night, 20 mins reading before lights out', cat:'wind', dur:'20 min' },
+      { time:'22:30', label:'Lights Out', sub:'In bed, asleep — 7 hrs before tomorrow’s alarm', cat:'wind', dur:'' },
+    ]
+  },
+  // TUE / THU - Footy training
+  footy: {
+    label: 'Footy Training',
+    sub: 'Tuesday · Thursday',
+    wakeup: '6:30AM',
+    bedtime: '10:30PM',
+    blocks: [
+      { time:'6:30', label:'Wake Up', sub:'Phone off, make bed, skincare — shorter morning but still sharp', cat:'morning', dur:'15 min' },
+      { time:'6:45', label:'Morning Prep', sub:'Breakfast, get ready — protein-rich start to the day', cat:'morning', dur:'25 min' },
+      { time:'7:10', label:'Leave for Work', sub:'Out the door — 7:30 start', cat:'work', dur:'' },
+      { time:'7:30', label:'Work', sub:'Deep work block first — protected hour, no distractions', cat:'work', dur:'~9 hrs' },
+      { time:'12:00', label:'Lunch', sub:'Whole food, high protein — fuel for training tonight', cat:'work', dur:'30 min' },
+      { time:'16:30', label:'Wrap Up Work', sub:'Finish tasks, prep gear for training', cat:'work', dur:'30 min' },
+      { time:'17:00', label:'Head to Footy', sub:'Travel, change, warm up — get your head right', cat:'training', dur:'45 min' },
+      { time:'17:45', label:'Footy Training', sub:'Full session — compete, communicate, be coachable', cat:'training', dur:'1 hr 30 min' },
+      { time:'19:15', label:'Post-Training', sub:'Cool down, pack up, head home — skip the post-training socials', cat:'training', dur:'30 min' },
+      { time:'19:45', label:'Dinner', sub:'High protein recovery meal — cook ahead if needed', cat:'evening', dur:'30 min' },
+      { time:'20:15', label:'Evening Rehab', sub:'Groin recovery exercises — especially important on training nights', cat:'evening', dur:'20 min' },
+      { time:'20:35', label:'Read / Decompress', sub:'10 pages minimum — wind down, no doom scrolling', cat:'free', dur:'45 min' },
+      { time:'21:20', label:'Plan Tomorrow', sub:'15 mins — set 3 priorities, what needs prep', cat:'wind', dur:'15 min' },
+      { time:'21:35', label:'Tidy Space', sub:'5 min reset before bed', cat:'wind', dur:'10 min' },
+      { time:'21:45', label:'Gratitude + Skincare', sub:'Write it down, full skincare routine', cat:'wind', dur:'15 min' },
+      { time:'22:10', label:'Phone Off — Read', sub:'Phone down, 20 mins reading before lights out', cat:'wind', dur:'20 min' },
+      { time:'22:30', label:'Lights Out', sub:'In bed — recovery sleep after training', cat:'wind', dur:'' },
+    ]
+  },
+  // SAT - Game day
+  sat: {
+    label: 'Game Day',
+    sub: 'Saturday',
+    wakeup: '7:45AM',
+    bedtime: '10:30PM',
+    blocks: [
+      { time:'7:45', label:'Wake Up', sub:'Phone off, make bed, skincare — game day mindset starts now', cat:'morning', dur:'15 min' },
+      { time:'6:45', label:'Morning Prep', sub:'Breakfast — carb-focused, high protein, hydrate well', cat:'morning', dur:'45 min' },
+      { time:'7:30', label:'Free Morning', sub:'Light walk, read, mobility work — stay loose, stay calm', cat:'free', dur:'3 hrs' },
+      { time:'10:30', label:'Pre-Game Prep', sub:'Gear check, travel prep, light snack — mentally prepare', cat:'training', dur:'1 hr' },
+      { time:'11:30', label:'Travel to Ground', sub:'Leave with time to spare — warm up properly', cat:'training', dur:'45 min' },
+      { time:'12:15', label:'Warm Up', sub:'Full team warm up — get loose, get sharp', cat:'training', dur:'1 hr' },
+      { time:'13:15', label:'Pre-Game', sub:'Final prep, team talk, locked in', cat:'training', dur:'1 hr' },
+      { time:'14:15', label:'Game', sub:'Play hard, compete every contest', cat:'training', dur:'2 hrs' },
+      { time:'16:15', label:'Post-Game', sub:'Cool down, review, team — no alcohol', cat:'training', dur:'1 hr' },
+      { time:'17:15', label:'Recovery', sub:'Ice bath or cold shower, stretch, high-protein meal', cat:'evening', dur:'1 hr 30 min' },
+      { time:'18:45', label:'Evening Rehab', sub:'Groin recovery — especially after game day load', cat:'evening', dur:'20 min' },
+      { time:'19:05', label:'Dinner', sub:'Recovery meal — protein and carbs, cook at home', cat:'evening', dur:'45 min' },
+      { time:'19:50', label:'Read / Decompress', sub:'10 pages, wind down from the game mentally', cat:'free', dur:'1 hr' },
+      { time:'20:50', label:'Plan Tomorrow (Sunday)', sub:'Light — set intentions for rest day', cat:'wind', dur:'10 min' },
+      { time:'21:00', label:'Tidy Space + Gratitude', sub:'Room reset, write gratitude, skincare', cat:'wind', dur:'20 min' },
+      { time:'22:10', label:'Phone Off — Read', sub:'20 mins reading, lights out at 10:30', cat:'wind', dur:'20 min' },
+      { time:'22:30', label:'Lights Out', sub:'Rest day tomorrow — recover well', cat:'wind', dur:'' },
+    ]
+  },
+  // SUN - Rest day
+  sun: {
+    label: 'Rest Day',
+    sub: 'Sunday',
+    wakeup: '~9:00AM',
+    bedtime: '10:30PM',
+    blocks: [
+      { time:'9:00', label:'Wake Up', sub:'Earn the sleep in — still make the bed, still do skincare', cat:'morning', dur:'30 min' },
+      { time:'9:30', label:'Slow Morning', sub:'Good breakfast, coffee, read — no rush but no wasting it', cat:'free', dur:'1 hr 30 min' },
+      { time:'11:00', label:'Weekly Review', sub:'15 mins — look at your trends, how was the week? Set intentions', cat:'work', dur:'15 min' },
+      { time:'11:15', label:'Mobility & Recovery', sub:'30 mins full stretch, foam roll, breathwork — Sunday is for recovery', cat:'training', dur:'30 min' },
+      { time:'11:45', label:'Rehab Exercises', sub:'Groin recovery — even on rest day, especially on rest day', cat:'evening', dur:'20 min' },
+      { time:'12:05', label:'Lunch', sub:'Whole food, high protein — no takeaway even on rest day', cat:'morning', dur:'45 min' },
+      { time:'12:50', label:'Free Afternoon', sub:'Whatever recharges you — social, nature, reading, crossword', cat:'free', dur:'4 hrs' },
+      { time:'17:00', label:'Prep for the Week', sub:'Meal prep, pack gym bag, lay out Monday gear', cat:'work', dur:'1 hr' },
+      { time:'18:00', label:'Dinner', sub:'Early, light — set yourself up for a good Monday', cat:'evening', dur:'45 min' },
+      { time:'18:45', label:'Read / Write', sub:'Get ahead — reading, writing practice, anything productive', cat:'free', dur:'2 hrs' },
+      { time:'20:45', label:'Plan the Week', sub:'Block Monday properly — deep work, priorities, gym slot', cat:'wind', dur:'15 min' },
+      { time:'21:00', label:'Tidy + Gratitude + Skincare', sub:'Full wind-down routine — set Sunday night well', cat:'wind', dur:'30 min' },
+      { time:'22:10', label:'Phone Off — Read', sub:'20 mins reading, early lights out before big Monday', cat:'wind', dur:'20 min' },
+      { time:'22:30', label:'Lights Out', sub:'Big week ahead — 5:30am alarm', cat:'wind', dur:'' },
+    ]
+  }
+};
+
+let activeRoutineDay = null;
+
+function renderRoutine() {
+  const dow = today.getDay();
+  // Default to today's schedule type
+  if (!activeRoutineDay) {
+    if (dow === 0) activeRoutineDay = 'sun';
+    else if (dow === 6) activeRoutineDay = 'sat';
+    else if ([1,3,5].includes(dow)) activeRoutineDay = 'gym';
+    else activeRoutineDay = 'footy';
+  }
+  renderRoutineDay(activeRoutineDay);
+}
+
+function renderRoutineDay(type) {
+  activeRoutineDay = type;
+  const s = SCHEDULES[type];
+  const el = document.getElementById('routineContent');
+
+  const dayBtns = [
+    { key:'gym',   label:'GYM' },
+    { key:'footy', label:'FOOTY' },
+    { key:'sat',   label:'SAT' },
+    { key:'sun',   label:'SUN' },
+  ].map(d => '<button class="rday-btn' + (d.key===type?' active':'') + '" onclick="renderRoutineDay(\'' + d.key + '\')">' + d.label + '</button>').join('');
+
+  // Calculate free time
+  const totalBlocks = s.blocks.length;
+  const trainBlocks = s.blocks.filter(b => b.cat === 'training').length;
+
+  const timeline = s.blocks.map(b => {
+    return '<div class="tl-block">' +
+      '<div class="tl-time">' + b.time + '</div>' +
+      '<div class="tl-dot dot-' + b.cat + '"></div>' +
+      '<div class="tl-card cat-' + b.cat + '">' +
+        '<div class="tl-label">' + b.label + '</div>' +
+        '<div class="tl-sub">' + b.sub + '</div>' +
+        (b.dur ? '<div class="tl-duration dur-' + b.cat + '">' + b.dur + '</div>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="routine-day-tabs">' + dayBtns + '</div>' +
+    '<div class="routine-header">' +
+      '<div class="routine-day-title">' + s.label + '</div>' +
+      '<div class="routine-day-sub">' + s.sub + '</div>' +
+    '</div>' +
+    '<div class="routine-stats">' +
+      '<div class="rstat"><div class="rstat-num">' + s.wakeup + '</div><div class="rstat-lbl">Wake Up</div></div>' +
+      '<div class="rstat"><div class="rstat-num">' + s.bedtime + '</div><div class="rstat-lbl">Lights Out</div></div>' +
+      '<div class="rstat"><div class="rstat-num">' + totalBlocks + '</div><div class="rstat-lbl">Blocks</div></div>' +
+    '</div>' +
+    '<div class="routine-wrap"><div class="timeline">' + timeline + '</div></div>';
 }
 </script>
 </body>
